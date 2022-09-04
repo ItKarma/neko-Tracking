@@ -1,6 +1,6 @@
-const { proto, getContentType } = require('@adiwajshing/baileys');
+const { proto, getContentType,MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
 const { rastrearEncomendas } = require('correios-brasil');
-let codRastreio = ['NL034770970BR']; // array de códigos de rastreios
+//let codRastreio = ['NL034770970BR']; // array de códigos de rastreios
 
 const fs = require('fs');
 module.exports = async (cat, Catchat, msg) => {
@@ -21,14 +21,22 @@ const isGroup = from.endsWith('@g.us')
 const botNumber = cat.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (cat.user.id.split(':')[0]+'@s.whatsapp.net' || cat.user.id) : (msg.key.participant || msg.key.remoteJid)
 const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:msg})}
+const templateButtons = [
+    {index: 1, urlButton: {displayText: '⭐ Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
+    {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
+    {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
+]
+
+const templateMessage = {
+    text: "Hi it's a template message",
+    footer: 'Hello World',
+    templateButtons: templateButtons
+}
 
 switch (command) {
     
 case 'menu':
-    rastrearEncomendas(codRastreio).then(response => {
-  console.log(response[0].eventos);
-  // O reverse é apenas para organizarmos os dados do rastreio do mais antigo para o mais recente !
-})
+    cat.sendRacMessage(from, templateMessage)
 break
 
 case 'react':
