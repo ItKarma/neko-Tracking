@@ -1,6 +1,5 @@
 const { proto, getContentType,MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
-//const { rastrearEncomendas } = require('correios-brasil');
-//let codRastreio = ['NL034770970BR']; // array de códigos de rastreios
+
 
 const fs = require('fs');
 module.exports = async (cat, Catchat, msg) => {
@@ -24,11 +23,15 @@ const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:ms
 const templateButtons = [
   {index: 1, urlButton: {displayText:'🧙‍♂️ developer', url: 'https://wa.me/5591984155848'}},
   {index: 2, urlButton: {displayText: '👨‍💻 Código fonte' ,url: 'https://github.com/danzok/catRastreio'}},
-  {index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}},
+  /*{index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}}*/
 ]
 const buttonMessage = {
     text: `Ola @${pushname}, esse bot lhe ajudar a rastrear 
-    suas encomendas, é so mandar o código !.`,
+    suas encomendas, é so mandar o código !.
+    
+    Pará rastreiar use o comando "cod"
+    ex :
+ cod LB857214362S6 `,
     footer: 'version beta ✓',
     templateButtons: templateButtons,
 }
@@ -36,12 +39,11 @@ const buttonMessage = {
 switch (command) {
     
 case 'menu':
-  //  console.log(from)
     cat.sendMessage(from, buttonMessage)
 break
 
-case 'ei':
-    cat.sendMessage(from, { text: "a"} )
+case 'cod':
+    console.log(dn)
 break
 
 default:
