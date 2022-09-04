@@ -1,3 +1,3 @@
 # catRastreio
 tracking bot in nodejs , for whatsapp , It's under development...
-, if you want to help fork the project and contribute and leave your ⭐
+, if you want to help fork the project and contribute and please leave your star ⭐
