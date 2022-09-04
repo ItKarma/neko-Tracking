@@ -1,7 +1,14 @@
+/*
+  essa api você pode ter acesso entrando em contato com https://api.linketrack.com/
+  por favor se for clonar o projeto deixe sua estrela e deixe os créditos.
+*/
+
 const { proto, getContentType,MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
-
-
+require('dotenv').config()
+const { fetchJson } = require('../function/fetch');
 const fs = require('fs');
+const api = process.env.URL_API;
+//console.log(api)
 module.exports = async (cat, Catchat, msg) => {
     try{
 if (msg.key && msg.key.remoteJid === 'status@broadcast') return
@@ -15,7 +22,6 @@ const isCmd = body.startsWith(prefix)
 const command = isCmd ? body.slice(prefix.length).trim().split(' ').shift().toLowerCase() : ''
 const args = body.trim().split(/ +/).slice(1)
 const dn = args.join(' ')
-const isGroup = from.endsWith('@g.us')
 const botNumber = cat.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (cat.user.id.split(':')[0]+'@s.whatsapp.net' || cat.user.id) : (msg.key.participant || msg.key.remoteJid)
 const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:msg})}
@@ -26,15 +32,15 @@ const templateButtons = [
   /*{index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}}*/
 ]
 const buttonMessage = {
-    text: `Ola @${pushname}, esse bot lhe ajudar a rastrear 
-    suas encomendas, é so mandar o código !.
+    text: `Ola @${pushname}, Esse bot lhe ajudara a rastrear suaencomendas, é so mandar o código !
     
-    Pará rastreiar use o comando "cod"
+    Para rastreiar , use o comando "cod"
     ex :
- cod LB857214362S6 `,
-    footer: 'version beta ✓',
+    cod LB857214362S6 `,
+    footer: '@catRastreio beta ✓',
     templateButtons: templateButtons,
 }
+
 
 switch (command) {
     
@@ -43,8 +49,19 @@ case 'menu':
 break
 
 case 'cod':
-    console.log(dn)
-break
+ let  res = await fetchJson(`${api}${dn}`);
+ let status = res.eventos[0].status;
+ let  local = res.eventos[0].local;
+ let  data = res.eventos[0].data;
+ let  hora = res.eventos[0].hora;
+await cat.sendMessage(from, {text: `*📦Encomenda Encontrada📦*
+ 
+*📌 status atual* : ${status}
+*📍 local atual* : ${local}
+*📅 data* : ${data}
+*⌛ hora* : ${hora}
+ `})
+   break
 
 default:
      }

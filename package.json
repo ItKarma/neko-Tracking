@@ -24,6 +24,8 @@
   "dependencies": {
     "@adiwajshing/baileys": "^4.4.0",
     "correios-brasil": "^3.0.0",
+    "dotenv": "^16.0.2",
+    "node-fetch": "2.0",
     "qrcode-terminal": "^0.12.0"
   }
 }
