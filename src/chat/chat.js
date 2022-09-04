@@ -22,22 +22,22 @@ const sender = msg.key.fromMe ? (cat.user.id.split(':')[0]+'@s.whatsapp.net' || 
 const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:msg})}
 
 const templateButtons = [
-    {index: 1, urlButton: {displayText: '⭐ Star Baileys on GitHub!', url: 'https://github.com/adiwajshing/Baileys'}},
-    {index: 2, callButton: {displayText: 'Call me!', phoneNumber: '+1 (234) 5678-901'}},
-    {index: 3, quickReplyButton: {displayText: 'This is a reply, just like normal buttons!', id: 'id-like-buttons-message'}},
+  {index: 1, urlButton: {displayText:'🧙‍♂️ developer', url: 'https://wa.me/5591984155848'}},
+  {index: 2, urlButton: {displayText: '👨‍💻 Código fonte' ,url: 'https://github.com/danzok/catRastreio'}},
+  {index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}},
 ]
-
-const templateMessage = {
-    text: "Hi it's a template message",
-    footer: 'Hello World',
-    templateButtons: templateButtons
+const buttonMessage = {
+    text: `Ola @${pushname}, esse bot lhe ajudar a rastrear 
+    suas encomendas, é so mandar o código !.`,
+    footer: 'version beta ✓',
+    templateButtons: templateButtons,
 }
 
 switch (command) {
     
 case 'menu':
-    console.log(from)
-    cat.sendMessage(from, templateMessage)
+  //  console.log(from)
+    cat.sendMessage(from, buttonMessage)
 break
 
 case 'ei':
