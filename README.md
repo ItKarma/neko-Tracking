@@ -4,3 +4,4 @@ tracking bot in nodejs , for whatsapp , It's under development...
 
 
 If you want to test the project send "menu" to this private on whatsapp https://wa.me/+559193722115
+Obs : for now only the pt-br language haha
