@@ -1,0 +1,29 @@
+{
+  "name": "cat-rastreio",
+  "version": "1.0.0",
+  "description": "bot de rastreio de encomendas",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sheynz/cat-rastreio.git"
+  },
+  "keywords": [
+    "zap-rastreio",
+    "bot-rastreio"
+  ],
+  "author": "sheynz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sheynz/cat-rastreio/issues"
+  },
+  "homepage": "https://github.com/sheynz/cat-rastreio#readme",
+  "dependencies": {
+    "@adiwajshing/baileys": "^4.4.0",
+    "correios-brasil": "^3.0.0",
+    "qrcode-terminal": "^0.12.0"
+  }
+}

@@ -1,0 +1,3 @@
+{
+    "ignore":["src/cache/session.json"]
+}
