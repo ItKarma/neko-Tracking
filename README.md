@@ -26,7 +26,7 @@ Caso o código seja inválido ou a encomenda ainda não esteja postada
 - ``Api do site api.linketrack.com``
 - `` Api Baileys``
 <br>
-<h3>Contato para uso <h3>
+mande o comando "menu" , para este número no whatsapp https://wa.me/+559193722115
 
 
 
