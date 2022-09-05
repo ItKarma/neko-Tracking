@@ -8,7 +8,7 @@ require('dotenv').config()
 const { fetchJson } = require('../function/fetch');
 const fs = require('fs');
 const api = process.env.URL_API;
-//console.log(api)
+
 module.exports = async (cat, Catchat, msg) => {
     try{
 if (msg.key && msg.key.remoteJid === 'status@broadcast') return
@@ -26,25 +26,28 @@ const botNumber = cat.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (cat.user.id.split(':')[0]+'@s.whatsapp.net' || cat.user.id) : (msg.key.participant || msg.key.remoteJid)
 const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:msg})}
 
- // send a buttons message!
+
 const buttons = [
-  {buttonId:  `${prefix}allStatus` , buttonText: {displayText: 'Todos os Registros da encomenda'
+  {buttonId:  `${prefix}menu` , buttonText: {displayText: 'Todos os Registros da encomenda'
   }, type: 1}]
   
 const templateButtons = [
-  {index: 1, urlButton: {displayText:'🧙‍♂️ developer', url: 'https://wa.me/5591984155848'}},
-  {index: 2, urlButton: {displayText: '👨‍💻 Código fonte' ,url: 'https://github.com/danzok/catRastreio'}},
-  /*{index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}}*/
+  {index: 1, urlButton: {displayText:'🧙‍♂️ Desenvolvedor', url: 'https://wa.me/5591984155848'}},
+  {index: 2, urlButton: {displayText: '👨‍💻 Código fonte' ,url: 'https://github.com/danzok/catRastreio'}}
 ]
+//const img = 
+//console.log(img)
 const buttonMessage = {
-    text: `Ola @${pushname}, Esse bot lhe ajudara a rastrear sua encomendas, é so mandar o código !
-    
-    Para rastreiar , use o comando "cod"
-    ex :
-    cod LB857214362S6 `,
+   image :  fs.readFileSync( __dirname + '/img/cat.jpg') ,
+    caption : `Ola @${pushname}, eu lhe ajudarei a rastrear suas encomendas, é so mandar o código !
+
+Para rastreiar , use o comando "cod"
+ex :
+cod LB857214362S6 `,
     footer: '@catRastreio beta ✓',
     templateButtons: templateButtons,
 }
+
 
 
 switch (command) {
@@ -71,7 +74,7 @@ const mess =  `*📦Encomenda Encontrada📦*
 *📍 local atual* : ${local}
 *📅 data* : ${data}
 *⌛ hora* : ${hora}
- `   
+ `  
 
 const buttonMessage = {
     text: mess,
@@ -82,16 +85,15 @@ const buttonMessage = {
 
 cat.sendMessage(from,buttonMessage, { quoted : msg })
     }
-break 
-/*
-case'allStatus':
-cat.sendMessage(from,{ text : 'ok'} )
-break */
 }catch (err){
     console.log(err)
     reply('encomenda não encontrada, por favor entre em contato com meu desenvolvedor ou tente novamente mais tarde..')
 }
-   break
+break ;
+ case 'allStatus':
+ reply('tudo ok')
+
+break ;
 
 default:
      }
