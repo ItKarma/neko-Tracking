@@ -49,6 +49,10 @@ case 'menu':
 break
 
 case 'cod':
+  try{
+    if (dn === '' || undefined )
+        reply('Por favor me envie um código válido')
+    else{
  let  res = await fetchJson(`${api}${dn}`);
  let status = res.eventos[0].status;
  let  local = res.eventos[0].local;
@@ -61,6 +65,10 @@ await cat.sendMessage(from, {text: `*📦Encomenda Encontrada📦*
 *📅 data* : ${data}
 *⌛ hora* : ${hora}
  `})
+ }
+}catch (err){
+    reply('Encomenda não existe ou código inválido, tente novamente mais tarde caso o código estiver correto.')
+}
    break
 
 default:
