@@ -3,7 +3,7 @@
   por favor se for clonar o projeto deixe sua estrela e deixe os créditos.
 */
 
-const { proto, getContentType,MessageType, MessageOptions, Mimetype } = require('@adiwajshing/baileys');
+const { proto, getContentType,MessageType, MessageOptions, Mimetype , generateWAMessageFromContent} = require('@adiwajshing/baileys');
 require('dotenv').config()
 const { fetchJson } = require('../function/fetch');
 const fs = require('fs');
@@ -26,13 +26,18 @@ const botNumber = cat.user.id.split(':')[0]
 const sender = msg.key.fromMe ? (cat.user.id.split(':')[0]+'@s.whatsapp.net' || cat.user.id) : (msg.key.participant || msg.key.remoteJid)
 const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:msg})}
 
+ // send a buttons message!
+const buttons = [
+  {buttonId:  `${prefix}allStatus` , buttonText: {displayText: 'Todos os Registros da encomenda'
+  }, type: 1}]
+  
 const templateButtons = [
   {index: 1, urlButton: {displayText:'🧙‍♂️ developer', url: 'https://wa.me/5591984155848'}},
   {index: 2, urlButton: {displayText: '👨‍💻 Código fonte' ,url: 'https://github.com/danzok/catRastreio'}},
   /*{index: 3, quickReplyButton: {displayText: 'Rastrear', id: 'id-like-buttons-message'}}*/
 ]
 const buttonMessage = {
-    text: `Ola @${pushname}, Esse bot lhe ajudara a rastrear suaencomendas, é so mandar o código !
+    text: `Ola @${pushname}, Esse bot lhe ajudara a rastrear sua encomendas, é so mandar o código !
     
     Para rastreiar , use o comando "cod"
     ex :
@@ -50,24 +55,41 @@ break
 
 case 'cod':
   try{
+      
     if (dn === '' || undefined )
         reply('Por favor me envie um código válido')
     else{
+        
  let  res = await fetchJson(`${api}${dn}`);
  let status = res.eventos[0].status;
  let  local = res.eventos[0].local;
  let  data = res.eventos[0].data;
  let  hora = res.eventos[0].hora;
-await cat.sendMessage(from, {text: `*📦Encomenda Encontrada📦*
+const mess =  `*📦Encomenda Encontrada📦*
  
 *📌 status atual* : ${status}
 *📍 local atual* : ${local}
 *📅 data* : ${data}
 *⌛ hora* : ${hora}
- `})
- }
+ `   
+
+const buttonMessage = {
+    text: mess,
+    footer: 'catRastreio beta ✓',
+    buttons: buttons,
+    headerType: 1
+}
+
+cat.sendMessage(from,buttonMessage, { quoted : msg })
+    }
+break 
+/*
+case'allStatus':
+cat.sendMessage(from,{ text : 'ok'} )
+break */
 }catch (err){
-    reply('Encomenda não existe ou código inválido, tente novamente mais tarde caso o código estiver correto.')
+    console.log(err)
+    reply('encomenda não encontrada, por favor entre em contato com meu desenvolvedor ou tente novamente mais tarde..')
 }
    break
 
