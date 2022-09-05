@@ -1,7 +1,8 @@
 # catRastreio
-tracking bot in nodejs , for whatsapp , It's under development...
-, if you want to help fork the project and contribute and please leave your star ⭐
+ Esse bot do whatsapp é para rastreiar encomendas do correios , 
+ ele esta sendo construindo com a api baileys, e com a api linketrak.com , se quiser contribuir deixe sua estrela e fork o projeto ⭐
 
 
-If you want to test the project send "menu" to this private on whatsapp https://wa.me/+559193722115
+Se você quiser testar o projeto envie "menu" para este privado em whatsapp https://wa.me/+559193722115
+
 Obs : for now only the pt-br language haha
