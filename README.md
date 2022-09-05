@@ -10,11 +10,12 @@
 </p>
 
 <h3>Descrição</h3>
-Esse bot do whatsapp irá rastrear encomendas <br>
+Bot com a função de rastrear suas encomendas.
+ <br>
 Exenplo : 
 
 ![Exemplo rastreio ](https://telegra.ph/file/557f92228d7f1b46ab578.png)
 
 Caso o código seja inválido ou a encomenda ainda não esteja postada 
 
-![retorno false]()
+![retorno false](https://telegra.ph/file/bf11deafe05efc864104e.png)
