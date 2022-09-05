@@ -19,3 +19,9 @@ Exenplo :
 Caso o código seja inválido ou a encomenda ainda não esteja postada 
 
 ![retorno false](https://telegra.ph/file/bf11deafe05efc864104e.png)
+
+## ✔️ Técnicas e tecnologias utilizadas
+
+- ``Nodejs``
+- ``Api do site api.linketrack.com``
+- `` Api Baileys``
