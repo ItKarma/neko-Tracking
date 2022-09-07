@@ -28,5 +28,5 @@ Caso o código seja inválido ou a encomenda ainda não esteja postada
 <br>
 mande o comando "menu" , para este número no whatsapp https://wa.me/+559193722115
 
-
+nota : até então no momento não sei se continuarei trazendo atualização para este projeto, ele está em desenvolvimento caso queira usar mande mensagem para o bot se não responde é pq esta off , espere pelo desenvolvedor para ligalo.
 
