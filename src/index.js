@@ -25,7 +25,7 @@ async function startCat(){
     cat.ev.on('messages.upsert', async catChat => {
         if (!catChat.messages) return
         msg = catChat.messages[0]
-   //     console.log(msg)
+       console.log(msg)
         require("./chat/chat")(cat,catChat, msg)})
         
     }

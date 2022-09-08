@@ -28,7 +28,7 @@ const reply = async(teks) => {await cat.sendMessage(from,{text: teks},{quoted:ms
 
 
 const buttons = [
-  {buttonId:  `${prefix}menu` , buttonText: {displayText: 'Todos os Registros da encomenda'
+  {buttonId:  `${prefix}all ${dn}` , buttonText: {displayText: '*📥 TODOS OS REGISTROS*'
   }, type: 1}]
   
 const templateButtons = [
@@ -48,10 +48,33 @@ cod LB857214362S6 `,
     templateButtons: templateButtons,
 }
 
-
-
 switch (command) {
+ case `all`:
+ try {
+  const cod = msg.message.buttonsResponseMessage.selectedButtonId;
+  const filterCod = cod.split(' ');
+  const Cod = filterCod[1]
     
+ let  res = await fetchJson(`${api}${Cod}`);
+ let events = res.eventos ;
+ let mess = ''
+for(evennt of events){
+     mess = mess +  `
+     *📌 STATUS* : ${evennt.status}
+     *📍 LOCAL* : ${evennt.local}
+     *📅 DATA* : ${evennt.data}
+     *⌛ HORA* : ${evennt.hora}
+     
+     `
+ }
+ 
+ console.log(mess)
+ cat.sendMessage(from, { text : mess }, { quoted : msg })
+} catch(err){
+    reply('ouve um error interno tente novamente.');
+}
+break ;
+
 case 'menu':
     cat.sendMessage(from, buttonMessage)
 break
@@ -84,15 +107,12 @@ const buttonMessage = {
 }
 
 cat.sendMessage(from,buttonMessage, { quoted : msg })
+
     }
 }catch (err){
     console.log(err)
     reply('encomenda não encontrada, por favor entre em contato com meu desenvolvedor ou tente novamente mais tarde..')
 }
-break ;
- case 'allStatus':
- reply('tudo ok')
-
 break ;
 
 default:
