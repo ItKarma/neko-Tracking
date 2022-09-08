@@ -47,6 +47,9 @@ cod LB857214362S6 `,
     footer: '@catRastreio beta ✓',
     templateButtons: templateButtons,
 }
+function react(id, text1 = {}){
+const reactionMessage = {react: {text: text1,key: msg.key}}
+cat.sendMessage(id, reactionMessage)}
 
 switch (command) {
  case `all`:
@@ -68,7 +71,7 @@ for(evennt of events){
      `
  }
  
- console.log(mess)
+ react(from, '📥')
  cat.sendMessage(from, { text : mess }, { quoted : msg })
 } catch(err){
     reply('ouve um error interno tente novamente.');
@@ -76,7 +79,9 @@ for(evennt of events){
 break ;
 
 case 'menu':
+    
     cat.sendMessage(from, buttonMessage)
+    react(from, '📄')
 break
 
 case 'cod':
@@ -107,6 +112,7 @@ const buttonMessage = {
 }
 
 cat.sendMessage(from,buttonMessage, { quoted : msg })
+react(from, '🔍')
 
     }
 }catch (err){
