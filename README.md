@@ -11,12 +11,23 @@
 
 <h3>Descrição</h3>
 Bot com a função de rastrear suas encomendas.
- <br>
-Exenplo : 
+<br>
+<h5>Menu</h5>
 
-![Exemplo rastreio ](https://telegra.ph/file/557f92228d7f1b46ab578.png)
+![exemplo do menu](https://telegra.ph/file/2d928ec0139c027516ada.png)
+<br>
+<h5>Exenplo usando comando cod</h5> 
 
-Caso o código seja inválido ou a encomenda ainda não esteja postada 
+![Exemplo rastreio ](https://telegra.ph/file/6ac0b1a2ff7c11142d09b.png)
+
+<br> 
+<h5>Buscando todos os registros da encomenda!.</h5>
+
+![exemplo de registro geral](https://telegra.ph/file/202c252af80eba1504745.png)
+
+<br>
+
+<h5>Código inválido ou a encomenda ainda não esteja postada</h5>
 
 ![retorno false](https://telegra.ph/file/bf11deafe05efc864104e.png)
 
