@@ -71,7 +71,7 @@ for(evennt of events){
      `
  }
  
- react(from, '📥')
+ react(from, '📋')
  cat.sendMessage(from, { text : mess }, { quoted : msg })
 } catch(err){
     reply('ouve um error interno tente novamente.');
